@@ -192,7 +192,6 @@ pessoa.apresentacao = function(){
 }
 
 // Agora, apresente-se ;)
-pessoa.apresentacao()
-'Olá, eu sou a Anna Luiza Araujo, tenho 26 anos, 1.66, meu peso é 50, e só hoje, eu já caminhei 39 metros!'
+pessoa.apresentacao() //'Olá, eu sou a Anna Luiza Araujo, tenho 26 anos, 1.66, meu peso é 50, e só hoje, eu já caminhei 39 metros!'
 
 ```
