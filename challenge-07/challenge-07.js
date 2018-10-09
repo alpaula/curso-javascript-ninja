@@ -69,6 +69,7 @@ Só vamos mudar o range:
 - No primeiro "for", mostre os números pares entre 100 e 120, inclusive eles;
 - No segundo "for", mostre os números ímpares entre 111 e 125, inclusive eles.
 */
+
 console.log( 'Números pares entre 100 e 120:' );
 for( var number3 = 100; number3 <= 120; number3++ ){
     if(number3 % 2 === 0){
