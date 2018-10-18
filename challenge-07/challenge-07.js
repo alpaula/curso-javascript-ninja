@@ -12,8 +12,6 @@ function addItem( item ){
     return arr;
 }
 
-console.log(addItem('Novo Item'));
-
 /*
 Adicione um novo array ao array criado no início do desafio, com ao menos 3
 itens de tipos diferentes, mostrando o resultado no console.
@@ -25,7 +23,7 @@ Mostre no console o segundo elemento desse último array, criado acima, com a
 frase:
 "O segundo elemento do segundo array é [ELEMENTO]."
 */
-console.log( 'O segundo elemento do segundo array é ' + arr[6][1].comer + '.' )
+console.log( 'O segundo elemento do segundo array é ' + arr[5][1].comer + '.' )
 
 /*
 Mostre no console quantos itens tem o primeiro array criado, com a frase:
@@ -37,7 +35,7 @@ console.log( 'O primeiro array tem ' + arr.length + ' itens.' )
 Agora mostre no console quantos itens tem o segundo array criado, com a frase:
 "O segundo array tem [QUANTIDADE DE ITENS] itens."
 */
-console.log( 'O segundo array tem ' + arr[6].length + ' itens.' )
+console.log( 'O segundo array tem ' + arr[5].length + ' itens.' )
 
 /*
 Utilizando a estrutura de repetição `while`, mostre no console todos os números
@@ -45,10 +43,10 @@ pares entre 10 e 20, inclusive esses 2.
 */
 
 console.log( 'Números pares entre 10 e 20: ' );
-var number = 10;
-while( number <= 20){
-    number % 2 === 0 ? console.log(number) : '',
-    number++;
+var counter = 10;
+while( counter <= 20){
+    counter % 2 === 0 ? console.log(counter) : '',
+    counter++;
 };
 
 // ?
@@ -57,10 +55,10 @@ while( number <= 20){
 Na mesma ideia do exercício acima: mostre agora os números ímpares.
 */
 console.log( 'Números ímpares entre 10 e 20:' );
-var number2 = 10;
-while( number2 <= 20 ){
-    number2 % 2 !== 0 ? console.log(number2) : '';
-    number2++
+var counter = 10;
+while( counter < 20 ){
+    counter % 2 !== 0 ? console.log(counter) : '';
+    counter++
 }
 
 /*
@@ -71,15 +69,15 @@ Só vamos mudar o range:
 */
 
 console.log( 'Números pares entre 100 e 120:' );
-for( var number3 = 100; number3 <= 120; number3++ ){
-    if(number3 % 2 === 0){
-        console.log(number3)
+for( var counter = 100; counter <= 120; counter++ ){
+    if(counter % 2 === 0){
+        console.log(counter)
     }
 };
 
 console.log( 'Números ímpares entre 111 e 125:' );
-for( var number4 = 100; number4 <= 120; number4++ ){
-    if(number4 % 2 !== 0 ){
-        console.log(number4)
+for( var counter = 111; counter <= 125; counter++ ){
+    if(counter % 2 !== 0 ){
+        console.log(counter)
     }
 }
