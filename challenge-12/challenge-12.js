@@ -11,7 +11,7 @@
 	Preencha cada propriedade com os seus dados pessoais, respeitando o tipo
 	de valor para cada propriedade.
 	*/
-	
+	var anna = 'Anna'
 	var person = {
 		name: 'Anna Luiza',
 		lastname: 'Araujo',
