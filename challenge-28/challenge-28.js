@@ -30,28 +30,32 @@
 
 	var $input = doc.querySelector('[data-js="input"]');
 	var $submit = doc.querySelector('[data-js="button"]');
-	var $logradouro = doc.querySelector('[data-js="logradouro"]')
-	var $bairro = doc.querySelector('[data-js="bairro"]')
-	var $cidade = doc.querySelector('[data-js="cidade"]')
-	var $estado = doc.querySelector('[data-js="estado"]')
-	var $cep = doc.querySelector('[data-js="cep"]')
-	var $message = doc.querySelector('[data-js="message"]')
+	var $message = doc.querySelector('[data-js="message"]');
+	var $logradouro = doc.querySelector('[data-js="logradouro"]');
+	var $bairro = doc.querySelector('[data-js="bairro"]');
+	var $cidade = doc.querySelector('[data-js="cidade"]');
+	var $estado = doc.querySelector('[data-js="estado"]');
+	var $cep = doc.querySelector('[data-js="cep"]');
 
 	var inputValue;
 	var response;
-	var messageValue;
 	
 	var ajax = new XMLHttpRequest();
 
-	$submit.addEventListener('click', buttonClick, false);
+	$submit.addEventListener('click', submitClick, false);
 	ajax.addEventListener('readystatechange', function() {
 		if (isRequest()) {
 			try{
 				response = JSON.parse(ajax.responseText);
-				setFields();
-				$message.value = `Endereço referente ao CEP ${inputValue}:`
+				if (response.message) {
+					clearFields();
+					$message.textContent = getMessage('error');
+				} else {
+					setFields();
+					$message.textContent = getMessage('ok');
+				}
 			} catch (err) {
-				$message.value = `Não encontramos o endereço para o CEP ${inputValue}.`
+				$message.textContent = getMessage('error');
 			}
 		}
 	});
@@ -69,18 +73,34 @@
 		return str.replace(/\D+/g, '');
 	}
 
-	function buttonClick(ev) {
+	function submitClick(ev) {
 		ev.preventDefault();
 		inputValue = cleanInput($input.value);
 		getCep();
-		$message.value = `Buscando informações para o CEP ${inputValue}...`;
+		$message.textContent = getMessage('loading');
+	}
+
+	function getMessage(type) {
+		return {
+			'loading': `Buscando informações para o CEP ${inputValue}...`,
+			'ok': `Endereço referente ao CEP ${inputValue}:`,
+			'error': `Não encontramos o endereço para o CEP ${inputValue}.`,
+		}[type];
 	}
 
 	function setFields() {
-		$logradouro.value = response.address;
-		$bairro.value = response.district;
-		$cidade.value = response.city;
-		$estado.value = response.state;
-		$cep.value = response.code;
+		$logradouro.textContent = response.address;
+		$bairro.textContent = response.district;
+		$cidade.textContent = response.city;
+		$estado.textContent = response.state;
+		$cep.textContent = response.code;
+	}
+
+	function clearFields() {
+		$logradouro.textContent = '-';
+		$bairro.textContent = '-';
+		$cidade.textContent = '-';
+		$estado.textContent = '-';
+		$cep.textContent = '-';
 	}
 })(window, document);
