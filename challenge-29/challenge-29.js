@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
 
   /*
   Vamos estruturar um pequeno app utilizando módulos.
